@@ -1,4 +1,4 @@
-# ⚡ Falcon v3.0 — High-Performance Network Diagnostics & TUI Framework
+# ⚡ Falcon v3.0 High-Performance Network Diagnostics & TUI Framework
 
 [![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat&logo=go)](https://go.dev/)
 [![Build](https://img.shields.io/badge/Build-Passing-39FF14?style=flat)](#installation)
