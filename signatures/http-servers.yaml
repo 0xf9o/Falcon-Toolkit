@@ -1,0 +1,83 @@
+# Falcon v3.0 - Extended Protocol Signatures
+# Web Servers & HTTP Frameworks
+# Format: YAML signature definitions for banner/header regex matching.
+
+- id: http-iis
+  name: Microsoft IIS Web Server
+  protocol: http
+  ports: [80, 443, 8080]
+  description: Microsoft Internet Information Services (IIS) web server
+  matches:
+    - regex: "(?i)Server:\\s*Microsoft-IIS(?:/([0-9.]+))?"
+      service: HTTP
+      product: IIS
+      version_group: 1
+
+- id: http-lighttpd
+  name: Lighttpd Web Server
+  protocol: http
+  ports: [80, 443, 8080]
+  description: Lighttpd (lighty) lightweight web server
+  matches:
+    - regex: "(?i)Server:\\s*lighttpd(?:/([0-9.]+))?"
+      service: HTTP
+      product: Lighttpd
+      version_group: 1
+
+- id: http-gunicorn
+  name: Gunicorn Python WSGI Server
+  protocol: http
+  ports: [8000, 8080]
+  description: Gunicorn 'Green Unicorn' WSGI HTTP Server
+  matches:
+    - regex: "(?i)Server:\\s*gunicorn(?:/([0-9.]+))?"
+      service: HTTP
+      product: Gunicorn
+      version_group: 1
+
+- id: http-tomcat
+  name: Apache Tomcat Servlet Engine
+  protocol: http
+  ports: [8080, 8443, 8009]
+  description: Apache Tomcat Java Servlet/JSP engine
+  matches:
+    - regex: "(?i)Server:\\s*Apache-Coyote(?:/([0-9.]+))?"
+      service: HTTP
+      product: Tomcat
+      version_group: 1
+    - regex: "(?i)Apache Tomcat(?:/([0-9.]+))?"
+      service: HTTP
+      product: Tomcat
+      version_group: 1
+
+- id: http-jetty
+  name: Eclipse Jetty Web Server
+  protocol: http
+  ports: [8080, 8443]
+  description: Eclipse Jetty Java-based web server and servlet engine
+  matches:
+    - regex: "(?i)Server:\\s*Jetty(?:\\(([0-9.v]+)\\))?"
+      service: HTTP
+      product: Jetty
+      version_group: 1
+
+- id: http-express
+  name: Node.js Express Framework
+  protocol: http
+  ports: [3000, 8000, 8080]
+  description: Express.js Node.js web application framework
+  matches:
+    - regex: "(?i)X-Powered-By:\\s*Express"
+      service: HTTP
+      product: Express/Node.js
+
+- id: http-php
+  name: PHP Scripting Engine
+  protocol: http
+  ports: [80, 443, 8080]
+  description: PHP server-side scripting language
+  matches:
+    - regex: "(?i)X-Powered-By:\\s*PHP(?:/([0-9.]+))?"
+      service: HTTP
+      product: PHP
+      version_group: 1

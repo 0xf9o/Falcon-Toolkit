@@ -1,0 +1,82 @@
+# Falcon v3.0 - Infrastructure & Network Service Signatures
+
+- id: net-telnet
+  name: Telnet Protocol Service
+  protocol: tcp
+  ports: [23]
+  description: Legacy Telnet remote management protocol (plaintext)
+  matches:
+    - regex: "(?i)(?:\\xff\\xfd|login:|Username:|Password:|Welcome to)"
+      service: Telnet
+      product: Telnet
+
+- id: net-rdp
+  name: Microsoft Remote Desktop Protocol
+  protocol: tcp
+  ports: [3389]
+  description: Microsoft Remote Desktop Protocol for Windows remote access
+  matches:
+    - regex: "(?i)(?:\\x03\\x00\\x00|RDP)"
+      service: RDP
+      product: Microsoft RDP
+
+- id: net-vnc
+  name: VNC Remote Desktop
+  protocol: tcp
+  ports: [5900, 5901, 5902]
+  description: Virtual Network Computing remote desktop protocol
+  matches:
+    - regex: "^RFB ([0-9]+\\.[0-9]+)"
+      service: VNC
+      product: VNC
+      version_group: 1
+
+- id: mail-imap
+  name: IMAP Mail Protocol
+  protocol: tcp
+  ports: [143, 993]
+  description: Internet Message Access Protocol for email retrieval
+  matches:
+    - regex: "(?i)^\\* OK.*(?:IMAP|Dovecot|Courier|Cyrus)"
+      service: IMAP
+      product: IMAP Server
+
+- id: mail-pop3
+  name: POP3 Mail Protocol
+  protocol: tcp
+  ports: [110, 995]
+  description: Post Office Protocol version 3 for email retrieval
+  matches:
+    - regex: "(?i)^\\+OK.*(?:POP3|Dovecot|Courier)"
+      service: POP3
+      product: POP3 Server
+
+- id: net-sip
+  name: SIP VoIP Protocol
+  protocol: tcp
+  ports: [5060, 5061]
+  description: Session Initiation Protocol for VoIP communications
+  matches:
+    - regex: "(?i)SIP/[0-9.]+"
+      service: SIP
+      product: SIP VoIP
+
+- id: net-docker
+  name: Docker Remote API
+  protocol: http
+  ports: [2375, 2376]
+  description: Docker Engine REST API (unauthenticated exposure is critical risk)
+  matches:
+    - regex: "(?i)(?:\"ApiVersion\"|\"Version\".*\"DockerVersion\")"
+      service: Docker API
+      product: Docker Engine
+
+- id: net-kubernetes
+  name: Kubernetes API Server
+  protocol: http
+  ports: [6443, 8443]
+  description: Kubernetes cluster management API server
+  matches:
+    - regex: "(?i)(?:\"apiVersion\"|\"kind\".*\"Status\")"
+      service: Kubernetes
+      product: Kubernetes API

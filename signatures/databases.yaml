@@ -1,0 +1,61 @@
+# Falcon v3.0 - Database & Cache Service Signatures
+
+- id: db-mongodb
+  name: MongoDB Document Database
+  protocol: tcp
+  ports: [27017]
+  description: MongoDB NoSQL document-oriented database
+  matches:
+    - regex: "(?i)(?:mongod|mongodb|It looks like you are trying to access MongoDB)"
+      service: MongoDB
+      product: MongoDB
+
+- id: db-mssql
+  name: Microsoft SQL Server
+  protocol: tcp
+  ports: [1433]
+  description: Microsoft SQL Server relational database
+  matches:
+    - regex: "(?i)(?:Microsoft SQL Server|MSSQLSERVER)"
+      service: MSSQL
+      product: Microsoft SQL Server
+
+- id: db-oracle
+  name: Oracle Database
+  protocol: tcp
+  ports: [1521]
+  description: Oracle relational database management system
+  matches:
+    - regex: "(?i)(?:Oracle Database|TNS:|ORCL)"
+      service: OracleDB
+      product: Oracle Database
+
+- id: cache-memcached
+  name: Memcached In-Memory Cache
+  protocol: tcp
+  ports: [11211]
+  description: Memcached high-performance distributed memory object caching system
+  matches:
+    - regex: "(?i)(?:CLIENT_ERROR|SERVER_ERROR|STORED|VALUE)"
+      service: Memcached
+      product: Memcached
+
+- id: db-elasticsearch
+  name: Elasticsearch Search Engine
+  protocol: http
+  ports: [9200, 9300]
+  description: Elasticsearch distributed search and analytics engine
+  matches:
+    - regex: "(?i)(?:\"tagline\"\\s*:\\s*\"You Know, for Search\"|X-elastic-product)"
+      service: Elasticsearch
+      product: Elasticsearch
+
+- id: db-cassandra
+  name: Apache Cassandra
+  protocol: tcp
+  ports: [9042, 9160]
+  description: Apache Cassandra distributed NoSQL database
+  matches:
+    - regex: "(?i)(?:cassandra|CQL)"
+      service: Cassandra
+      product: Apache Cassandra
