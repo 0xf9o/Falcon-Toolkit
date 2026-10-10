@@ -1,0 +1,31 @@
+# Binaries
+bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test and coverage artifacts
+*.out
+*.test
+*.prof
+
+# Falcon Runtime Databases & Workspaces
+data/
+*.db
+*.db-wal
+*.db-shm
+exports/
+reports/
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS specific
+Thumbs.db

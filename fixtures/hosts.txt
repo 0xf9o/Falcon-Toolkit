@@ -1,0 +1,8 @@
+# Falcon Sample DNS / Hosts Fixture
+10.0.10.1    gateway.corp.internal
+10.0.10.2    dns.corp.internal
+10.0.10.15   dc01.corp.internal
+10.0.10.25   fileserver.corp.internal
+192.168.50.1 ot-gateway.ot.internal
+192.168.50.101 plc-line1.ot.internal
+192.168.50.102 scada-server.ot.internal
